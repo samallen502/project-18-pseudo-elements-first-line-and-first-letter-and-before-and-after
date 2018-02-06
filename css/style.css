@@ -1,0 +1,52 @@
+/* Pseudo-elements -------------------------------- */
+
+.intro::first-line { /* This makes the first line of the intro bold ... no matter the line width of the viewport! Interesting! */
+  font-weight: bold;
+  font-size: 1.4em;
+}
+
+.intro::first-letter { /* This actually targets the first character of intro. This is used to make typographical effects, make the first letter of an article pop. */
+  float: left;
+  font-size: 80px;
+  color: white;
+  padding: 5px 10px;
+  background: #384047;
+  margin: 10px 10px 0 0;
+  border-radius: 5px;
+  line-height: 1;
+}
+
+/* Browsers will accept ".intro:first-letter", for example, with just one colon ... professionals use double colons, though, to dileneate between the pseudo-class, which gets one colon, and the pseudo-element, which should get two colons. */
+
+.jpg::before { /* The before pseudo-element allows you to add content before specific HTML that appears on the page. */
+  content: url(../img/icn-picture.svg); /* The "content" property is always paired with the before pseudo-element. It's what allows you to pop in extra content to the previewed page from CSS. If you want, you can add text after "content:" with "JPG -" ... and the quotation marks are required within the parentheses because it's a string ... or you can add an image, which I prefer and did.*/
+  margin-right: 8px;
+}
+
+.zip::before {
+  content: url(../img/icn-zip.svg);
+  margin-right: 8px;
+}
+
+h1::before, /* This is a good example of how you can easily add two extra elements to a single html element using CSS. */
+h1::after {
+  content: "";
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: coral;
+  margin: 0 10px;
+}
+/* Instead of "::before", you could also use "::after" ... */
+
+/* This next trick was taken from https://teamtreehouse.com/library/css-selectors/advanced-selectors/the-attr-css-function ... */
+/* Notice in HTML how the ul has a class of d-loads? And within d-loads there are li, each with a title associated with them?
+   You can use the "attr()" CSS function to insert the title into what displays on the page from CSS, like so.*/
+.d-loads a::after {
+  content: attr(title); /* You could also sub "href" for "title" to display the URL for the link instead of the file type, which in this case happens to be title. */
+  display: inline-block;
+  color: initial;
+  font-size: .65em;
+  margin-left: 5px;
+}
